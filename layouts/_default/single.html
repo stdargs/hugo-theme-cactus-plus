@@ -1,17 +1,22 @@
 {{ partial "head.html" . }}
-    <body>
+    <body class="line-numbers">
        {{ partial "nav.html" . }}
 
         <section id="wrapper" class="post">
             <article>
+                <section class="post-header">
+                    <img class="post-header-image" src="{{ .Params.Image }}"/>
+                </section>
                 <header>
+                    
                     <h1>
                         {{ .Title }}
                     </h1>
+                    <h2 class="post-description">{{ .Params.Description }}</h2>
                     <h2 class="headline">
                     {{ .Date.Format "Jan 2, 2006 15:04" }}
                     · {{ if lt 1 .WordCount }}{{ .WordCount }} words{{ else }}{{ .WordCount }} word{{ end }}
-                    · {{ .ReadingTime }} minute read
+                    · <span class="reading-duration">{{ .ReadingTime }}</span> minute read
                       <span class="tags">
                       {{ with .Params.tags }}
                       {{ if ge (len .) 1 }}

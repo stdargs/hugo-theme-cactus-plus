@@ -1,7 +1,8 @@
 <script src="{{ .Site.BaseURL }}js/jquery-3.3.1.min.js"></script>
 <script src="{{ .Site.BaseURL }}js/main.js"></script>
-<script src="{{ .Site.BaseURL }}js/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<!-- <script src="{{ .Site.BaseURL }}js/highlight.min.js"></script> -->
+<script src="{{ .Site.BaseURL }}js/prism.js"></script>
+<!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
 {{ range .Site.Params.customJS }}
 <script src="{{ $.Site.BaseURL }}{{ . }}"></script>
@@ -15,11 +16,23 @@
 <script>
 var baiduAnalytics = '{{ .Site.Params.baiduAnalytics }}';
 var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?" + baiduAnalytics;
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+// (function() {
+//   var hm = document.createElement("script");
+//   hm.src = "https://hm.baidu.com/hm.js?" + baiduAnalytics;
+//   var s = document.getElementsByTagName("script")[0];
+//   s.parentNode.insertBefore(hm, s);
+// })();
+Prism.plugins.NormalizeWhitespace.setDefaults(
+  {
+    'remove-trailing': true,
+    'remove-indent': true,
+    'left-trim': true,
+    'right-trim': true,
+    // 'break-lines': 10,
+    'indent': 2,
+    // 'remove-initial-line-feed': false,
+    'tabs-to-spaces': 2,
+    // 'spaces-to-tabs': 4
+  });
 </script>
 {{ end }}
